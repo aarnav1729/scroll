@@ -1,0 +1,21 @@
+This project provides a simple setup for creating an image scroll effect using HTML, CSS, and JavaScript. 
+
+The setup includes a responsive layout with a full-screen black background and a container element for the images with a flexible layout that adapts to different screen sizes.
+
+The container element uses the flexbox layout with a horizontal gap between the images. 
+
+Each image has a fixed aspect ratio and is centered inside its container using the object-fit and object-position CSS properties. 
+
+The images also have a border radius to give them a rounded shape.
+
+The JavaScript code provides the functionality for scrolling through the images using the mouse. 
+
+When the user clicks on the window and drags the mouse left or right, the images container moves horizontally in the opposite direction. 
+
+The amount of movement is proportional to the distance between the mouse click and the mouse position, and the maximum distance is half of the screen width. 
+
+This creates a smooth scrolling effect that follows the user's mouse movements.
+
+The code is simple and easy to customize, allowing developers to use their own images and adjust the styling and behavior to fit their needs. 
+
+The project can be used as a starting point for building image galleries, sliders, or other interactive web components that require horizontal scrolling.
