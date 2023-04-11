@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scroll</title>
+
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            background-color: black;
+            margin: 0rem;
+            padding: 0rem;
+        }
+
+        .image {
+            height: 40vmin;
+            width: 56vmin;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 1rem;
+        }
+
+        #image-track {
+            display: flex;
+            gap: 4vmin;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(0%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="image-track" data-mouse-down-at = "0">
+        <img class= "image" src="https://images.unsplash.com/photo-1568191009535-7d8b407d389a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" alt="image 1" draggable="false">
+        <img class= "image" src="https://images.unsplash.com/photo-1536195892759-c8a3c8e1945e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80" alt="image 2" draggable="false">
+        <img class= "image" src="https://images.unsplash.com/photo-1546471180-335a013cb87b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="image 3" draggable="false">
+        <img class= "image" src="https://images.unsplash.com/photo-1547241850-eb8a8754f95c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80" alt="image 4" draggable="false">            
+        <img class= "image" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80" alt="image 5" draggable="false">
+        <img class= "image" src="https://images.unsplash.com/photo-1569154107747-fb00e3b3430d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=449&q=80" alt="image 6" draggable="false">
+        <img class= "image" src="https://images.unsplash.com/photo-1561542611-7af32c97f8db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="image 7" draggable="false">
+    </div>
+
+    <script>
+        const track = document.getElementById("image-track");   
+
+        window.onmousedown = e => {
+            track.dataset.mouseDownAt = e.clientX;
+        }
+
+        window.onmouseup = e => {
+            track.dataset.mouseDownAt = "0";
+        }
+
+        window.onmousemove = e => {
+            if (track.dataset.mouseDownAt === "0") return;
+
+            const mouseDelta = pareseFloat(track.dataset.mouseDownAt) - e.clientX, 
+            maxDelta = window.innerWidth / 2;
+
+            const percentage = (mouseDelta / maxDelta) * -100;
+
+            track.style.transform = `translate(${percentage}%, -50%)`;
+        }
+    </script>
+</body>
+</html>
